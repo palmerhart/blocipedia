@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'figaro'
 gem 'turbolinks'
+gem 'devise'
 
 
 group :development, :test do

@@ -16,3 +16,13 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.halves {
+    width: 50%;
+}
+
+.center {
+    horizontal-align: middle;
+    vertical-align: middle;
+    text-align: center;
+}
