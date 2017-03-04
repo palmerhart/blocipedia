@@ -32,6 +32,9 @@ module Blocipedia
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     
+    #Palmer added this because of error message when running rspec spec
+    config.web_console.development_only = false
+    
     ActionMailer::Base.smtp_settings = {
       :address  => 'smtp.gmail.com',
       :domain   => 'mail.google.com',
