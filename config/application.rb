@@ -34,15 +34,6 @@ module Blocipedia
     
     #Palmer added this because of error message when running rspec spec
     config.web_console.development_only = false
-    
-    ActionMailer::Base.smtp_settings = {
-      :address  => 'smtp.gmail.com',
-      :domain   => 'mail.google.com',
-      :port     => 587,
-      :user_name  => "palmerhart@gmail.com",
-      :password => "nJDbofHUyJoP",
-      :enable_starttls_auto => true
-    }
-    
+   
   end
 end
