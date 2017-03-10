@@ -20,6 +20,7 @@ gem 'bootstrap-sass'
 gem 'figaro'
 gem 'turbolinks'
 gem 'devise'
+gem 'pundit'
 
 
 group :development, :test do

@@ -1,5 +1,7 @@
 <h1>All Wiki's</h1>
 
+<button><%= link_to "New Wiki", new_wiki_path %></button>
+
 <% @wiki.each do |wiki| %>
     <div class="media">
         <div class="media-body">
@@ -9,5 +11,3 @@
         </div>
     </div>
 <% end %>
-</br>
-<button><%= link_to "New Wiki", new_wiki_path %></button>
