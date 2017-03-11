@@ -1,5 +1,7 @@
 <h1><%= @wiki.title %></h1>
 <p><%= @wiki.body %></p>
 
-<button><%= link_to "Edit", edit_wiki_path %></button>
-<button><%= link_to "Delete", @wiki, method: :delete %></button>
+<% if user_is_authorized_for_wiki?(@wiki) %> 
+    <%= link_to "Edit", edit_wiki_path, class: 'btn btn-success' %>
+    <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger' %>
+<% end %>

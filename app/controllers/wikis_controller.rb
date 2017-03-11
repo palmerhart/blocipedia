@@ -1,4 +1,8 @@
 class WikisController < ApplicationController
+  
+  before_action :user_signed_in?, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
     @wiki = Wiki.all
   end
@@ -9,10 +13,12 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    @user = current_user
   end
   
   def create
     @wiki = Wiki.new(wikis_params)
+    @wiki.user = current_user
     
     if @wiki.save
       redirect_to @wiki, notice: "Wiki was saved successfully."
@@ -55,6 +61,5 @@ class WikisController < ApplicationController
   def wikis_params
     params.require(:wiki).permit(:title,:body,:private)
   end
-  
   
 end
