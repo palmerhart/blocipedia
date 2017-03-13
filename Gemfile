@@ -21,6 +21,7 @@ gem 'figaro'
 gem 'turbolinks'
 gem 'devise'
 gem 'pundit'
+gem 'stripe'
 
 
 group :development, :test do
