@@ -3,7 +3,7 @@ include Faker
 10.times do
     user = User.create!(
     email: Faker::Internet.email,
-    password: Faker::Internet.password,
+    password: 'password',
     confirmed_at: Time.now
     )
 end

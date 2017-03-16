@@ -17,13 +17,10 @@ class ChargesController < ApplicationController
             currency: 'usd'
         )
         
-        # PH create `Amount` class and it's default class method, which should return the number you wish to charge, in pennies, ex. $10 = 10_00
-        #amount = Stripe::Amount.create(
-        #    default: 15_00
-        #)
+        @user.update_attributes(role: 'premium')
         
         flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-        redirect_to user_path(current_user) # or wherever you want
+        redirect_to wikis_path # or wherever you want
         
         # Stripe will send back CardErrors, with friendly messages when something goes wrong.
         # This 'rescue block' catches and displays those errors.
@@ -40,8 +37,8 @@ class ChargesController < ApplicationController
         }
     end
     
-    #private
-    #def upgrade_user_role
-    #    @user.role = 'premium'
-    #end
+    private
+    def upgrade_user_role
+        @user.role = 'premium'
+    end
 end    
