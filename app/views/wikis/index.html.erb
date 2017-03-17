@@ -7,7 +7,7 @@
         <div class="media">
             <div class="media-body">
                 <h4 class="media-heading">
-                    <p><%= link_to wiki.title, wiki %> 
+                    <p><%= link_to markdown(wiki.title), wiki %> 
                         <% if wiki.private? %>
                             Private
                         <% else %>
@@ -27,7 +27,7 @@
             <div class="media-body">
                 <h4 class="media-heading">
                     <% if !wiki.private? %>
-                        <p><%= link_to wiki.title, wiki %></p>
+                        <p><%= link_to markdown(wiki.title), wiki %></p>
                     <% end %>
                 </h4>
             </div>
