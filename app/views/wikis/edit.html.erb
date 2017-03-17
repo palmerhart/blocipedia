@@ -13,11 +13,13 @@
             <%= w.text_area :body, rows: 10, class: 'form-control', placeholder: "Enter Wiki body" %>
         </div>
         
-        <div class="form-group">
-            <%= w.label :private, class: 'checkbox' do %>
-                <%= w.check_box :private %> Private Topic
-            <% end %>
-        </div>   
+        <% if current_user.admin? || current_user.premium? %>
+            <div class="form-group">
+                <%= w.label :private, class: 'checkbox' do %>
+                    <%= w.check_box :private %> Private Topic
+                <% end %>
+            </div> 
+        <% end %>    
         
         <%= w.submit "Save" %>
       

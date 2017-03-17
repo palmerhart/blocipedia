@@ -1,6 +1,15 @@
 <h1><%= @wiki.title %></h1>
 <p><%= @wiki.body %></p>
 
-
 <%= link_to "Edit", edit_wiki_path, class: 'btn btn-success' %>
 <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger' %>
+
+<br>
+<br>
+<p>Wiki is:
+    <% if @wiki.private? %>
+        Private
+    <% else %>
+        Public
+    <% end %>
+</p> 

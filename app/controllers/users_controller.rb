@@ -11,6 +11,12 @@ class UsersController < ApplicationController
           flash[:error] = "There was an error creating your account. Please try again."
           redirect_to :back
         end
+        
+        @user_wikis = @user.wikis.where(private: true)
+        
+        @user_wikis.each do |makepublic|
+          makepublic.update_attributes(private: false)
+        end
     end
     
 end
