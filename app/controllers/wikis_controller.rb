@@ -4,7 +4,7 @@ class WikisController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   
   def index
-    @wiki = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -30,6 +30,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.all
   end
   
   def update

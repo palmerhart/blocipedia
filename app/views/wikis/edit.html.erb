@@ -13,13 +13,25 @@
             <%= w.text_area :body, rows: 10, class: 'form-control', placeholder: "Enter Wiki body" %>
         </div>
         
+        
         <% if current_user.admin? || current_user.premium? %>
             <div class="form-group">
                 <%= w.label :private, class: 'checkbox' do %>
                     <%= w.check_box :private %> Private Topic
                 <% end %>
             </div> 
-        <% end %>    
+        <% end %>
+        
+        
+        <div class="jumbotron">
+            <% @users.each do |x| %>
+                <div class="form-group">
+                    <p><%= x.email %></p>
+                    <%= x.find(id).auth_collaborate.check_box :auth_collaborate %>
+                </div>
+                
+            <% end %>    
+        </div>
         
         <%= w.submit "Save" %>
       

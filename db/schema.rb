@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311164318) do
+ActiveRecord::Schema.define(version: 20170327235523) do
+
+  create_table "collaborators", force: :cascade do |t|
+    t.integer  "wiki_id"
+    t.integer  "user_id"
+    t.boolean  "auth_collaborate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "collaborators", ["id"], name: "index_collaborators_on_id", unique: true
+  add_index "collaborators", ["user_id"], name: "index_collaborators_on_user_id"
+  add_index "collaborators", ["wiki_id"], name: "index_collaborators_on_wiki_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -35,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170311164318) do
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["id"], name: "index_users_on_id", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "wikis", force: :cascade do |t|
@@ -46,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170311164318) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "wikis", ["id"], name: "index_wikis_on_id", unique: true
   add_index "wikis", ["user_id"], name: "index_wikis_on_user_id"
 
 end
