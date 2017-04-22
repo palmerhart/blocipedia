@@ -36,6 +36,8 @@ class WikisController < ApplicationController
   def update
     @wiki = Wiki.find(params[:id])
     @wiki.assign_attributes(wikis_params)
+    # need to build up collaborators list from users checked, potentially explicitely say for each collaborator.
+    
     
     if @wiki.save
       flash[:notice] = "Wiki was updated."

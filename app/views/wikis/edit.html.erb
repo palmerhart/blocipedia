@@ -22,15 +22,9 @@
             </div> 
         <% end %>
         
-        
+        <p>Delete this ref: collection_check_boxes(object, method, collection, value_method, text_method, options = {}, html_options = {}, &block)</p>
         <div class="jumbotron">
-            <% @users.each do |x| %>
-                <div class="form-group">
-                    <p><%= x.email %></p>
-                    <%= x.find(id).auth_collaborate.check_box :auth_collaborate %>
-                </div>
-                
-            <% end %>    
+           <%= collection_check_boxes :collaborator, :auth_collaborate, User.all, :id, :email, options = {},html_options = {} %>
         </div>
         
         <%= w.submit "Save" %>
