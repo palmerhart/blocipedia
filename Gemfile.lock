@@ -218,6 +218,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   pg
+  pry
   pry-rails
   pundit
   rails (= 4.2.7)

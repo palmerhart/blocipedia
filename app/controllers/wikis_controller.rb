@@ -1,3 +1,6 @@
+# delete this when done pry
+require 'pry'
+
 class WikisController < ApplicationController
   
   before_action :user_signed_in?, except: [:index, :show]
@@ -36,9 +39,23 @@ class WikisController < ApplicationController
   def update
     @wiki = Wiki.find(params[:id])
     @wiki.assign_attributes(wikis_params)
+    
+    #binding.pry
+    
     # need to build up collaborators list from users checked, potentially explicitely say for each collaborator.
+    #remove all collaborators from Wiki, then grab list of ID's from params under :collaborator_ids & loop through for each ID create collaborator ID relationship with that Wiki
+    #build method in rails, build up relationship objects.  In controller action
+    #use to create records: @wiki.collaborators.build(user_id: whatever)
     
+    @wiki.collaborators.each do |c|
+      c.delete
+    end
     
+    @wiki.collaborators.each do |c|
+      c.build(user_id: :collaborator_ids)
+    end
+      
+   
     if @wiki.save
       flash[:notice] = "Wiki was updated."
       redirect_to @wiki
