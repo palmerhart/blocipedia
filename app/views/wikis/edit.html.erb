@@ -22,9 +22,9 @@
             </div> 
         <% end %>
         
-        <p>Delete this ref: collection_check_boxes(object, method, collection, value_method, text_method, options = {}, html_options = {}, &block)</p>
+        
         <div class="jumbotron">
-           <%= collection_check_boxes :wiki, :collaborator_ids, User.all, :id, :email %>
+           <%= collection_check_boxes :wiki, :collaborating_user_ids, User.all, :id, :email %>
         </div>
         
         <%= w.submit "Save" %>

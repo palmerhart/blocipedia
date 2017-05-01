@@ -47,14 +47,17 @@ class WikisController < ApplicationController
     #build method in rails, build up relationship objects.  In controller action
     #use to create records: @wiki.collaborators.build(user_id: whatever)
     
-    @wiki.collaborators.each do |c|
-      c.delete
-    end
+    # @wiki.collaborators.each do |c|
+    #   c.delete
+    # end
     
-    @wiki.collaborators.each do |c|
-      c.build(user_id: :collaborator_ids)
-    end
-      
+    # wikis_params[:collaborator_ids].each do |id|
+    #   @wiki.collaborators.create(user_id: id)
+    # end
+    
+    #@wiki.collaborators.each do |c|
+    #  c.build(user_id: :collaborator_ids)
+    #end
    
     if @wiki.save
       flash[:notice] = "Wiki was updated."
@@ -77,9 +80,10 @@ class WikisController < ApplicationController
     end
   end
   
+  #added :collaborator_ids, to identify array =>[]
   private
   def wikis_params
-    params.require(:wiki).permit(:title,:body,:private)
+    params.require(:wiki).permit(:title,:body,:private,:collaborating_user_ids => [])
   end
   
 end
